@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello Bulma!</title>
+    <title>Weather App</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
@@ -13,8 +13,10 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
-  </head>
-  <body>
+</head>
+<body>
+
+
     <section class="hero is-success">
       <div class="hero-body">
         <div class="container">
@@ -31,21 +33,23 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-4 is-vertical is-parent">
         <div class="tile is-child box">
-          <p>top tile left</p>
-          <div class="level-item">
-            <p class="subtitle is-5">Enter a city:</p>
-          </div>
-          <input class="input" type="text" placeholder="New York City" />
-          <button class="button" type="submit">
-            Search
-          </button>
+            <div class="field has-addons">
+                <div class="control">
+                  <input class="input" type="text" placeholder="Enter a city">
+                </div>
+                <div class="control">
+                  <a class="button is-info" href="https://openweathermap.org/city">
+                    Search
+                  </a>
+                </div>
+              </div>
           <div class="tile is-child box">
-              <ul>Recently searched cities
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
+              <ul type="a">Recently searched cities
+                <li>Austin</li>
+                <li>Miami</li>
+                <li>Newark</li>
+                <li>San Francisco</li>
+                <li>Portland</li>
 
 
               </ul>
@@ -54,9 +58,19 @@
       </div>
       <div class="tile is-parent">
         <div class="tile is-child box">
-          <p class="title">Three</p>
+          <p  class="title">
+              <div class="city"></div>
+              <div class="temperature"></div>
+              <div class="humidity"></div>
+              <div class="wind"></div>
+              <div class="uvIndex"></div>
+              <div class="tempF"></div>
+              <br>
+            <p id="content">Widgets</p>
       <!-- All other tile elements -->
     </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
