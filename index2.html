@@ -14,7 +14,7 @@
       defer
       src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
     ></script>
-    <script src="script2.js" type="text/javascript"></script>
+
   </head>
 
   <body>
@@ -38,7 +38,7 @@
           <div class="field has-addons">
             <form id="weather-form">
               <label for="city-input">Search for a city</label>
-              <input type="text" id="city-name" />
+              <input type="text" id="city-name" val=""/>
               <br />
               <input id="search-weather" type="submit" value="Search" />
             </form>
@@ -46,7 +46,7 @@
         </div>
         <div class="tile is-child box">
           <p class="title">List</p>
-          <ul type="a">
+          <ul type="a" id="form">
             Recently searched cities
             <li>Austin</li>
             <li>Miami</li>
@@ -56,21 +56,27 @@
           </ul>
         </div>
       </div>
+
       <div class="tile is-parent">
         <div class="tile is-child box">
 
-       <form id="show-data">
+    <data class="data" id="show-data">
+        
           <p class="title">Data</p>
           <div class="city"></div>
           <div class="temperature"></div>
           <div class="humidity"></div>
           <div class="wind"></div>
           <div class="uvIndex"></div>
-        
-          </form>
+          <div id="openweathermap-widget-11"></div>
+          <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script><script>window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 11,cityid: '2643743',appid: 'baf28dc2bd487831b9b7128513ed1ae7',units: 'imperial',containerid: 'openweathermap-widget-11',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();</script>
+    </data>
+    <div id="openweathermap-widget-11"></div>
+  </script>
         </div>
        </div>
       </div>
     </div>
+    <script src="script2.js" type="text/javascript"></script>
   </body>
 </html>

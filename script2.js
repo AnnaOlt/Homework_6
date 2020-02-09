@@ -1,37 +1,31 @@
-$(document).ready(function() {
-  $("#search-weather").on("click", function(event) {
-    // event.preventDefault() can be used to prevent an event's default behavior.
-    // Here, it prevents the submit button from trying to submit a form when clicked
-    event.preventDefault();
+// $(document).ready(function() {
+$("#search-weather").on("click", function() {
+  event.preventDefault();
+  //     // event.preventDefault() can be used to prevent an event's default behavior.
+  //     // Here, it prevents the submit button from trying to submit a form when clicked
 
-    // Here we grab the text from the input box
-    var city = $("#city-name").val();
+  //     // Here we grab the text from the input box
 
-    // Here we construct our URL
-    var queryURL =
-      "https://api.openweathermap.org/data/2.5/weather?q=" +
-      city +
-      "&units=imperial" +
-      "&apikey=baf28dc2bd487831b9b7128513ed1ae7";
+  var city = $("#city-name").val();
 
-    //AJAX call to the weather API
-    $.ajax({
-      url: queryURL,
-      method: "GET",
-      success: function(data) {
-        var showDisplay = show(data);
-        $("#show-data").html(showDisplay);
-        $("#city-name").val("");
-      }
-    }).then(function(response) {
-      $("#show-data").text(JSON.stringify(response));
+  // Here we construct our URL
+  var queryURL =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&apikey=baf28dc2bd487831b9b7128513ed1ae7";
 
-      $(".city").html("<p>" + response.name + " Weather</p>");
-      $(".temperature").text("Temperture(C): " + response.main.temp);
-      $(".humidity").text("Humidity: " + response.main.humidity + "%");
-      $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
-      $(".uvIndex").text("UV Index: Need seperate ajax call");
-    });
+  //AJAX call to the weather API
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    response: "p={}"
+  }).then(function(response) {
+    console.log(response);
+
+    $(".city").text(response.name + " Weather");
+    $(".temperature").text("Temperture(K): " + response.main.temp);
+    $(".humidity").text("Humidity: " + response.main.humidity + "%");
+    $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
+    $(".uvIndex").text("UV Index: " + response.coord);
   });
-  return val(city);
 });
