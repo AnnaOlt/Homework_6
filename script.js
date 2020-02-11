@@ -1,52 +1,31 @@
-$(document).ready(function() {
-    $("#submitBtn").click (function() {
-        $("#content").load()
-        var city = $("#city-name").val();
-        // if (city != "") 
+// $(document).ready(function() {
+$("#search-weather").on("click", function() {
+  event.preventDefault();
+  //     // event.preventDefault() can be used to prevent an event's default behavior.
+  //     // Here, it prevents the submit button from trying to submit a form when clicked
 
-// function displayWeatherInfo () {
+  //     // Here we grab the text from the input box
 
-//     var city = $(this).attr("#city-name");
-// }       
-// API key
-var APIKey = "baf28dc2bd487831b9b7128513ed1ae7";
+  var city = $("#city-name").val();
 
-// URL to query the database
-var queryURL =
-  "https://api.openweathermap.org/data/2.5/weather?q=" + city +
-  APIKey;
+  // Here we construct our URL
+  var queryURL =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&apikey=baf28dc2bd487831b9b7128513ed1ae7";
 
-// AJAX call to the OpenWeatherMap API
-$.ajax({
-  url: queryURL,
-  method: "GET"
-})
+  //AJAX call to the weather API
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+    response: "p={}"
+  }).then(function(response) {
+    console.log(response);
 
-.then(function(response) {
-
-   $(".city").html(response.name);
-
-  console.log(queryURL);
-  console.log(response.name);
-
-  // return $("#show-data").text(JSON.stringify(response));
-
-  $(".city").html("<p>" + response.name + " Weather</p>");
-  $(".temperature").text("Temperture(C): " + response.main.temp);
-  $(".humidity").text("Humidity: " + response.main.humidity + "%");
-  $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
-  $(".uvIndex").text("UV Index: Need seperate ajax call");
-
+    $(".city").text(response.name + " Weather");
+    $(".temperature").text("Temperture(K): " + response.main.temp);
+    $(".humidity").text("Humidity: " + response.main.humidity + "%");
+    $(".wind").text("Wind Speed: " + response.wind.speed + " MPH");
+    $(".uvIndex").text("UV Index: " + response.coord);
+  });
 });
-
- })
-
-// var APIKeyUV = "7870887c26e1e43a711df1e8353f1636",
-
-// $.ajax({
-//   url: "https://api.openuv.io/api/v1/uv?" + "lat=-31.1&lng=56.4" + APIKeyUV,
-//   method: "GET"
-// }).then(function(response) {
-//   console.log(queryURL);
-//   console.log(response);
-// });
